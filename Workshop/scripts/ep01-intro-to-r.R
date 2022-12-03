@@ -8,7 +8,8 @@
 
 #
 # Topic: Basic Calculations and using Objects
-# Presented by: Belinda Fabian
+#
+
 
 # R can do sums ...
 3 + 5
@@ -19,7 +20,7 @@
 # - * / ** ^ ( )
 
 # 
-# Excercises
+# Exercises
 #
 
 # What does: 11 + 1 / 6  evaluate to ?

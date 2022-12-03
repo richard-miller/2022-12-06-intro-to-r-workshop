@@ -1,5 +1,5 @@
 #
-# A very quick demonstation of the sorts of things your can do with R
+# A very quick demonstration of the sorts of things you can do with R
 #
 
 
@@ -14,6 +14,13 @@ ggplot(diamonds) +
   geom_point(aes(x=carat, y=price, color=cut)) + 
   geom_smooth(aes(x=carat, y=price))
 
-# Display where my remote Git repository is ... can help with trouble shooting
 
-# system("git remote show origin")
+
+
+
+# Magic required to be able to save our changes to GitHub
+
+usethis::git_remotes()
+usethis::create_github_token(scopes = 'repo', description = 'R Workshop')
+
+gitcreds::gitcreds_set(url = "https://github.com")
