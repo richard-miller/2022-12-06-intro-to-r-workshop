@@ -6,53 +6,83 @@
 #      \_/\_/ \___/|_|  |_|\_\_|_| |_|\__, |   \_/\_/ |_|\__|_| |_| |____/ \__,_|\__\__,_|
 #                                     |___/                                               
 #
+#          _   _     _               _____ _     _                               
+#         | | | |___(_)_ __   __ _  |_   _(_) __| |_   ___   _____ _ __ ___  ___ 
+#         | | | / __| | '_ \ / _` |   | | | |/ _` | | | \ \ / / _ \ '__/ __|/ _ \
+#         | |_| \__ \ | | | | (_| |   | | | | (_| | |_| |\ V /  __/ |  \__ \  __/
+#          \___/|___/_|_| |_|\__, |   |_| |_|\__,_|\__, | \_/ \___|_|  |___/\___|
+#                            |___/                 |___/                         
+#
 #   Based on: https://datacarpentry.org/R-ecology-lesson/03-dplyr.html
 
-# Data is available from the following link (we should already have it)
-download.file(url = "https://ndownloader.figshare.com/files/2292169",
-              destfile = "data_raw/portal_data_joined.csv")
 
 #---------------------
 # Learning Objectives
 #---------------------
 
 #    Describe the purpose of the dplyr and tidyr packages.
-#    Select certain columns in a data frame with  dplyr using "select"
-#    Select certain rows in a data frame according to filtering conditions with  dplyr using "filter"
+#    Select particular columns in a data frame select()
+#    Select particular rows in a data frame according to filtering conditions using filter()
 #    Link the output of one dplyr function to the input of another function with the ‘pipe’ operator %>%
-#    Add new columns to a data frame that are functions of existing columns with mutate
-#    Use the split-apply-combine concept for data analysis
-#    Use summarize, group_by, and count to split a data frame into groups of observations, apply summary statistics for each group, and then combine the results.
-#    Describe the concept of a wide and a long table format and for which purpose those formats are useful.
-#    Describe what key-value pairs are.
-#    Reshape a data frame from long to wide format and back with the pivit_wider and pivit_longer commands from the tidyr package.
-#    Export a data frame to a .csv file.
+#    Add new columns to a data frame that are functions of existing columns with mutate()
+#    Use the split-apply-combine for data analysis
+#    Use summarize(), group_by(), and count() to split a data frame into groups of observations, apply summary statistics for each group, and then combine the results.
+#    Describe wide vs long table format why these formats are useful
+#    Describe what key-value pairs
+#    Reshape a data frame from long to wide format and back with the pivot_wider() and pivot_longer()
+#    Save a data frame to a .csv file.
 #----------------------
 
-#------------------
-# Lets get started!
-#------------------
+
+# Data is available from the following link (we should already have it)
+download.file(url = "https://ndownloader.figshare.com/files/2292169",
+              destfile = "data_raw/portal_data_joined.csv")
+
+
+# Read some data from a CSV file
+surveys <- read.csv("data_raw/portal_data_joined.csv")
+
+# lets remind ourselves what the dataframe looks like with str(), view() etc ...
+
+
+# Load up the required "dplyr" library from the TidyVerse
+
+
+#
+# Some common dplyr functions - select(), filter(), mutate(), group_by(), summarize()
+#
+
+#
+# select() - subset of columns (variables)
+#
+
+# include particular columns: eg plot_id, species_id and weight
+
+# exclude particular columns, eg record_id and species_id using a '-'
 
 
 
 
+#
+# filter() - subset of rows (observations)
+#
+
+# all rows where year is 1995
+
+# oldest year obversation rows (hint max(year, ))
+
+# longest hindfoot_length
 
 
-#-----------------------------------
-# Selecting columns & filtering rows
-#-----------------------------------
+
+#
+# Pipes - plumb thing together to create pipelines
+#
+
+# using temp dataframes, get rows where weight greater then 5 and show only species_id, sex and weight
 
 
-
-
-
-
-
-#-------
-# Pipes
-#-------
-
-
+# and we can store/assign the final result to an object
 
 
 
@@ -61,48 +91,69 @@ download.file(url = "https://ndownloader.figshare.com/files/2292169",
 # CHALLENGE
 #-----------
 
-# Using pipes, subset the ```surveys``` data to include animals collected before 1995 and 
-# retain only the columns ```year```, ```sex```, and ```weight```.
+# Using pipes, subset 'surveys' dataframe to extract animals collected before 1995 and 
+# retain only the columns year, sex, and weight.
 
 
 
 
 
-#--------
-# Mutate
-#--------
+#
+# mutate() - change a dataframe
+#
+
+# lets add a column called weight_kg by dividing the weight by 1000
 
 
+# we can also add multiple columns at the same time - eg we can also add weight_lb by multiplying by 2.2
 
 
+# using head() can be useful now
+
+
+# NA means "not available". We check is a data value is NA with the function is.na() and ! means 'not'
 
 
 #-----------
 # CHALLENGE
 #-----------
 
-# Create a new data frame from the ```surveys``` data that meets the following criteria: 
-# contains only the ```species_id``` column and a new column called ```hindfoot_cm``` containing 
-# the ```hindfoot_length``` values converted to centimeters. In this hindfoot_cm column, 
-# there are no ```NA```s and all values are less than 3.
-
+# Create a new data frame from the surveys dataframe that meets the following criteria:
+#
+# contains only the species_id column and a new column called hindfoot_cm containing 
+# the hindfoot_length  values in millimeters converted to centimeters.
+#
+# The hindfoot_cm column, should have no NA's and all values need to be less than 3.
+#
 # Hint: think about how the commands should be ordered to produce this data frame!
 
 
 
 
 
-#---------------------
-# Split-apply-combine
-#---------------------
+#
+# Split-apply-combine approach
+#
 
+#
+# group_by() - collect like things together to allow us to summarise
+#
+surveys %>%
+  group_by(sex) %>%
+  summarize(mean_weight = mean(weight, na.rm = TRUE))
 
-
+# we can include multiple group_by variables, eg species_id
+surveys %>%
+  filter(sex != "") %>%
+  filter(!is.na(weight)) %>% 
+  group_by(sex, species_id) %>%
+  summarize(.groups = species_id, mean_weight = mean(weight, na.rm = TRUE) ) %>%
+  head()
 
 
 
 #-----------
-# CHALLENGE
+# CHALLENGE 
 #-----------
 
 # 1. How many animals were caught in each ```plot_type``` surveyed?
@@ -162,7 +213,7 @@ download.file(url = "https://ndownloader.figshare.com/files/2292169",
 
 
 
-
+# handy dplyr cheetsheet: https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf
 
 
 
