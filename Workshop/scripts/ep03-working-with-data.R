@@ -16,22 +16,22 @@
 #   Based on: https://datacarpentry.org/R-ecology-lesson/03-dplyr.html
 
 
-#---------------------
+#
 # Learning Objectives
-#---------------------
+#
 
-#    Describe the purpose of the dplyr and tidyr packages.
-#    Select particular columns in a data frame select()
-#    Select particular rows in a data frame according to filtering conditions using filter()
-#    Link the output of one dplyr function to the input of another function with the ‘pipe’ operator %>%
-#    Add new columns to a data frame that are functions of existing columns with mutate()
-#    Use the split-apply-combine for data analysis
-#    Use summarize(), group_by(), and count() to split a data frame into groups of observations, apply summary statistics for each group, and then combine the results.
-#    Describe wide vs long table format why these formats are useful
-#    Describe what key-value pairs
+#    Get started with dplyr and tidyr packages from the TidyVerse
+#    Extract columns from datasframes using select()
+#    Extract rows datasframes filter()
+#    Link the output of one dplyr function to the input of another function with the ‘pipe’ operator
+#    Add new columns to dataframes using functions of existing columns with mutate()
+#    Use summarize(), group_by(), and count() to split a data frame into groups of observations, 
+#    Apply summary statistics to groups
+#    Understand wide vs long table formats and why these formats are useful
+#    Describe key-value pairs
 #    Reshape a data frame from long to wide format and back with the pivot_wider() and pivot_longer()
-#    Save a data frame to a .csv file.
-#----------------------
+#    Save a dataframes to .csv files
+
 
 
 # Data is available from the following link (we should already have it)
