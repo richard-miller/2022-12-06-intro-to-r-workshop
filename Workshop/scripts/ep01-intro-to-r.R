@@ -4,7 +4,7 @@
 #    | || | | | |_| | | (_) | | || (_) | |  _ < 
 #   |___|_| |_|\__|_|  \___/   \__\___/  |_| \_\
 # 
-# Derived from: https://datacarpentry.org/R-genomics/
+#   Derived from: https://datacarpentry.org/R-genomics/01-intro-to-R.html
 
 #
 # Topic: Basic Calculations and using Objects

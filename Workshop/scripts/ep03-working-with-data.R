@@ -1,11 +1,12 @@
-#####################
-# MANIPULATING DATA #
-#       using       #
-#     TIDYVERSE     #
-#####################
+
+#   __        __         _    _                        _ _   _       ____        _        
+#   \ \      / /__  _ __| | _(_)_ __   __ _  __      _(_) |_| |__   |  _ \  __ _| |_ __ _ 
+#    \ \ /\ / / _ \| '__| |/ / | '_ \ / _` | \ \ /\ / / | __| '_ \  | | | |/ _` | __/ _` |
+#     \ V  V / (_) | |  |   <| | | | | (_| |  \ V  V /| | |_| | | | | |_| | (_| | || (_| |
+#      \_/\_/ \___/|_|  |_|\_\_|_| |_|\__, |   \_/\_/ |_|\__|_| |_| |____/ \__,_|\__\__,_|
+#                                     |___/                                               
 #
-#
-# Based on: https://datacarpentry.org/R-ecology-lesson/03-dplyr.html
+#   Based on: https://datacarpentry.org/R-ecology-lesson/03-dplyr.html
 
 # Data is available from the following link (we should already have it)
 download.file(url = "https://ndownloader.figshare.com/files/2292169",
@@ -16,11 +17,11 @@ download.file(url = "https://ndownloader.figshare.com/files/2292169",
 #---------------------
 
 #    Describe the purpose of the dplyr and tidyr packages.
-#    Select certain columns in a data frame with the dplyr function select.
-#    Select certain rows in a data frame according to filtering conditions with the dplyr function filter .
-#    Link the output of one dplyr function to the input of another function with the ‘pipe’ operator %>%.
-#    Add new columns to a data frame that are functions of existing columns with mutate.
-#    Use the split-apply-combine concept for data analysis.
+#    Select certain columns in a data frame with  dplyr using "select"
+#    Select certain rows in a data frame according to filtering conditions with  dplyr using "filter"
+#    Link the output of one dplyr function to the input of another function with the ‘pipe’ operator %>%
+#    Add new columns to a data frame that are functions of existing columns with mutate
+#    Use the split-apply-combine concept for data analysis
 #    Use summarize, group_by, and count to split a data frame into groups of observations, apply summary statistics for each group, and then combine the results.
 #    Describe the concept of a wide and a long table format and for which purpose those formats are useful.
 #    Describe what key-value pairs are.
