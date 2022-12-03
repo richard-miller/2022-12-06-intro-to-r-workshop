@@ -23,8 +23,9 @@ GitHub may ask where you would like your new fork created.  Choose your personal
 
 ## 2. Launch R Studio
 
-Once you have *forked* the repository, go ahead and launch RStudio. 
-In the forked repository that you just created (check the url of this page includes your GitHub username), click on the link below that says 'Launch RStudio on Binder'.  
+Check you are now viewing your *fork* of the workshop repository by checking the URL of this pages includes you GitHub username.
+
+Now click on the button below that says 'Launch RStudio on Binder'.  
 
 <br>
 
