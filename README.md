@@ -15,7 +15,7 @@ During the workshop, participants will collaborate using this following Google D
 
 To allow you to save your work, you will need __fork__ (duplicate) this repository. *Fork* this repository by clicking the **Fork** button in the top right hand corner of this GitHub page:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Fork this Repo](images/fork.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Fork this Repo](images/image.png)
 
     
 GitHub may ask where you would like your new fork created.  Choose your personal GitHub account. You will then be redirected to you own copy of this repository.
