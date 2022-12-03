@@ -76,7 +76,7 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 
 
 #
-# Pipes - plumb thing together to create pipelines
+# Pipes - plumbing thing together to create pipelines
 #
 
 # using temp dataframes, get rows where weight greater then 5 and show only species_id, sex and weight
@@ -87,25 +87,25 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 
 
 
-#-----------
-# CHALLENGE
-#-----------
+#
+# CHALLENGE 1
+#
 
 # Using pipes, subset 'surveys' dataframe to extract animals collected before 1995 and 
-# retain only the columns year, sex, and weight.
+# retain only the columns called year, sex, and weight.
 
 
 
 
 
 #
-# mutate() - change a dataframe
+# mutate() - add columns to a dataframe
 #
 
 # lets add a column called weight_kg by dividing the weight by 1000
 
 
-# we can also add multiple columns at the same time - eg we can also add weight_lb by multiplying by 2.2
+# we can also add multiple columns at the same time - ie, we cloud also add weight_lb by multiplying by 2.2
 
 
 # using head() can be useful now
@@ -114,9 +114,9 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 # NA means "not available". We check is a data value is NA with the function is.na() and ! means 'not'
 
 
-#-----------
-# CHALLENGE
-#-----------
+#
+# CHALLENGE 2
+#
 
 # Create a new data frame from the surveys dataframe that meets the following criteria:
 #
@@ -129,49 +129,50 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 
 
 
-
-
 #
-# Split-apply-combine approach
-#
-
-#
-# group_by() - collect like things together to allow us to summarise
+# group_by() - collect like things together to allow us to summarise them
 #
 surveys %>%
   group_by(sex) %>%
   summarize(mean_weight = mean(weight, na.rm = TRUE))
 
 # we can include multiple group_by variables, eg species_id
-surveys %>%
-  filter(sex != "") %>%
-  filter(!is.na(weight)) %>% 
-  group_by(sex, species_id) %>%
-  summarize(.groups = species_id, mean_weight = mean(weight, na.rm = TRUE) ) %>%
-  head()
 
 
+#
+# count() - how many observerations for each (or combinations of) variables(s)
+#
 
-#-----------
-# CHALLENGE 
-#-----------
+# count how many observations of each year
 
-# 1. How many animals were caught in each ```plot_type``` surveyed?
+# equivalent to a group_by() and then using the n() function as a summary
 
-# 2. Use ```group_by()``` and ```summarize()``` to find the mean, min, and max hindfoot length 
-#    for each species (using ```species_id```). Also add the number of observations 
-#    (hint: see ```?n```).
+# and it also has a sort = TRUE option
+
+# or we could use the arrange() instead
+
+
+#
+# CHALLENGE 3
+#
+
+# 1. How many animals were caught in each plot_type surveyed? 
+
+
+# 2. Use group_by() and summarize() to find the mean, min, and max hindfoot length 
+#    for each species (using species_id). 
+#
+#    Also include the number of observations for each group (hint: see ?n )
+
 
 # 3. What was the heaviest animal measured in each year? 
 #    Return the columns ```year```, ```genus```, ```species_id```, and ```weight```.
 
 
 
-
-
-#-----------
+#
 # Reshaping
-#-----------
+#
 
 
 

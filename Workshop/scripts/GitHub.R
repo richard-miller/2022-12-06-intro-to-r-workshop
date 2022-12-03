@@ -1,4 +1,3 @@
-
 #     ____ _ _   _   _       _       _____     _              
 #    / ___(_) |_| | | |_   _| |__   |_   _|__ | | _____ _ __  
 #   | |  _| | __| |_| | | | | '_ \    | |/ _ \| |/ / _ \ '_ \ 
@@ -6,7 +5,7 @@
 #    \____|_|\__|_| |_|\__,_|_.__/    |_|\___/|_|\_\___|_| |_|
 #                                                             
 
-# Magic required to be able to save our changes to GitHub
+# Magic required to be able to save our changes to GitHub using tokens
 
 # Check which remote we are connected to
 usethis::git_remotes()
