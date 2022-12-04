@@ -10,6 +10,9 @@
 # Based on: https://datacarpentry.org/R-ecology-lesson/02-starting-with-data.html
 
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Topic: Downloading, reading, and inspecting the data
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Lets download some data (make sure the data folder exists)
 download.file(url = "https://ndownloader.figshare.com/files/2292169",
@@ -17,6 +20,7 @@ download.file(url = "https://ndownloader.figshare.com/files/2292169",
 
 # now we will read this "csv" into an R object called "surveys"
 surveys <- read.csv("data_raw/portal_data_joined.csv")
+
 
 # and take a look at it
 
@@ -35,9 +39,9 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 
 
 
-# --------
-# Exercise
-# --------
+# --------------------
+# Exercise/Challenge
+# --------------------
 #
 # What is the class of the object surveys?
 #
@@ -48,20 +52,14 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 #
 # Answer:
 
-# What's the average weight of survey animals
-#
-#
-# Answer:
 
-# Are there more Birds than Rodents ?
-#
-#
-# Answer:
+# Bonus functions 
 
 
-# 
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Topic: Sub-setting
-#
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # first element in the first column of the data frame (as a vector)
 
@@ -93,32 +91,62 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 # we also use other objects to specify the range
 
 
+# We can omit (leave out) columns using '-'
 
+# --------------------
+# Exercise/Challenge
+# --------------------
+#Using slicing, see if you can produce the same result as:
 #
-# Challenge: Using slicing, see if you can produce the same result as:
+#   head(surveys)
 #
-#   tail(surveys)
-#
-# i.e., print just last 6 rows of the surveys dataframe
+# i.e., print just first 6 rows of the surveys dataframe
 #
 # Solution:
 
 
 
-# We can omit (leave out) columns using '-'
+# column "names" can be used in place of the column numbers and $ operator to isolate
 
 
 
-# column "names" can be used in place of the column numbers
+# --------------------
+# Exercise/Challenge
+# --------------------
 
+#Bonus functions:
 
-
+# What's the average weight of survey animals
 #
+#
+# Answer:
+
+# Are there more Birds than Rodents ?
+#
+#
+# Answer:
+
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Topic: Factors (for categorical data)
-#
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-# factors have an order
+#Turning characters into levels
+
+
+# factors that have an order
+
+
+
+# --------------------
+# Exercise/Challenge
+# --------------------
+#   1. Change the columns taxa and genus in the surveys data frame into a factor.
+#   2. Using the functions you learned before, can you find out…
+#        a. How many rabbits were observed?
+#        b. How many different genera are in the genus column?
 
 
 # Converting factors
@@ -129,10 +157,13 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 
 # so does our survey data have any factors
 
+# Renaming factors
 
-#
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Topic:  Dealing with Dates
-#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # R has a whole library for dealing with dates ...
 
