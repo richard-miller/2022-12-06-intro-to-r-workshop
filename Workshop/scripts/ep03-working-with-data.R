@@ -45,6 +45,16 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 # lets remind ourselves what the dataframe looks like with str(), view() etc ...
 
 
+
+#        _       _            
+#     __| |_ __ | |_   _ _ __ 
+#    / _` | '_ \| | | | | '__|
+#   | (_| | |_) | | |_| | |   
+#    \__,_| .__/|_|\__, |_|   
+#         |_|      |___/      
+
+
+
 # Load up the required "dplyr" library from the TidyVerse
 
 
@@ -59,7 +69,6 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 # include particular columns: eg plot_id, species_id and weight
 
 # exclude particular columns, eg record_id and species_id using a '-'
-
 
 
 
@@ -170,6 +179,14 @@ surveys %>%
 
 
 
+
+#    _   _     _            
+#   | |_(_) __| |_   _ _ __ 
+#   | __| |/ _` | | | | '__|
+#   | |_| | (_| | |_| | |   
+#    \__|_|\__,_|\__, |_|   
+#                |___/      
+
 #
 # Reshaping
 #
@@ -214,7 +231,7 @@ surveys %>%
 
 
 
-# handy dplyr cheetsheet: https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf
+
 
 
 
