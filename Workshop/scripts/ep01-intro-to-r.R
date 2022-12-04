@@ -113,13 +113,11 @@ weight_lb <- 55    # doesn't print anything
 weight_lb          # and so does typing the name of the object
 
 # There are 2 and a bit pounds in a kilogram 
-2.20462 * weight_lb
-
-weight_lb <- 57.5
-2.20462 * weight_lb
-
-weight_kg <- 2.20462 * weight_lb
-weight_kg
+#
+# 2.20462 * weight_lb
+# weight_lb <- 57.5
+# weight_kg <- 2.20462 * weight_lb
+#
 
 # 
 # Exercise
@@ -151,6 +149,7 @@ weight_kg
 # 
 #
 # Add explanatory comments to the following lines of code
+#
 
 ft <- 3
 in <- ft * 12
@@ -160,18 +159,28 @@ m = cms / 100
 #
 # Topic: Functions and Arguments
 #
-sqrt(2)
-sqrt(a)
-abs(-23.3)
-round(3.14159)
-pi
+# Square Root:  sqrt()
+#
+
+# arguments can be constants of objecs
+
+# Absolute Value: abs()
+# 
+# Decimal rounding: round(3.14159)
+
+
+# Built-in constants: eg, pi
 
 # Getting help about particular functions 
-?round
-args(round)
+#
+# Question Mark followed by function name, eg: ?round
 
-round(3.14159, digits = 2)
-round(digits = 2, x = 3.14159)
+# or if we just want to know bount the arguments, use: args()
+
+# Argument have default order - but can re-ordered using names
+#
+# round(3.14159, 2)
+# round(digits = 2, x = 3.14159)
 
 #
 # Exercise
@@ -185,47 +194,52 @@ round(digits = 2, x = 3.14159)
 #
 # Topic: Vectors and Data Types
 
-# Combine some values in a vector
-glengths <- c(4.6, 3000, 50000)
-glengths
+# Combine some values in a 'vector'
+#
+# c(value, value, value ...)
+#
+# Let's assign the following numbers to an object called glengths:
+#
+#  4.6, 3000, 50000
 
-species <- c("ecoli", "human", "corn")
-species
+# and repeat to create a vector of species
+#
+#  "ecoli", "human", "corn"
 
-length(glengths)
-length(species)
+# use length() to obtain how many elements a vector contains
 
-5 * glengths
+# we can also ask what structure of our vectors look like with str()
 
-double_lengths <- glengths + glengths
-double_lengths
+# and also see what class they are with class()
 
-class(glengths)
-class(species)
 
-str(glengths)
-str(species)
+# and btw, there are other classes as well ...
+#
+# sqrt_of_minus_one <- sqrt(-1+0i)
+# true_or_false_value <- TRUE
+# decimal_number = 54.0
+# whole_number = -54L
 
-lengths <- c(glengths, 90)        # adding at the end
-lengths <- c(30, glengths)        # adding at the start
-lengths
+#
+# Once we have some vectors, we can apply operations to them as a whole
+#
 
-# note all the elements have to be the same type
+# multiply glengths by 5
+# add glength to itsself
+
+# appending and prepending elememts to a vector
+#
+# c(vector, value)
+# c(value, vector)
+#
+
+
+
+# note all the elements of a vector must be the same type
 length_species <- c(4.5, "ecoli")
 length_species
 
 # This automatic conversion is called 'coercion' or 'casting' ..
-
-# and there are other types as well ...
-sqrt_of_minus_one <- 1i
-true_or_false_value <- TRUE
-decimal_number = 54.0
-whole_number = -54L
-
-class(sqrt_of_minus_one)
-class(true_or_false_value)
-class(whole_number)
-class(decimal_number)
 
 # --------
 # Exercise
@@ -242,6 +256,8 @@ class(decimal_number)
 #   thing
 #   class(thing)
 #
+
+
 # What will happen in each of these examples?
 #
 #   num_char <- c(1, 2, 3, "a")
@@ -268,25 +284,37 @@ class(decimal_number)
 # Topic: Subsetting vectors
 #
 
+# create a vector
 animals <- c("mouse", "rat", "dog", "cat")
-animals[2]
-animals[c(3, 2)]
 
-more_animals <- animals[c(1, 2, 3, 2, 1, 4)]
-more_animals
+# reference (access) to second element using [] 
+
+# access the subset consisting of element 3 and element 2
+
+# we can reference each element more than once
+#
+# six animal names refencered by indexes 1,2,3,3,2,1
+
 
 # Conditional subsetting
-weight_g <- c(21,   34,    39,   54,   55)
-weight_g[   c(TRUE, FALSE, TRUE, TRUE, FALSE)]
+#
+# weight_g <- c(21,   34,    39,   54,   55)
+# weight_g[   c(TRUE, FALSE, TRUE, TRUE, FALSE)]
+# 
 
-weight_g > 50
-weight_g[weight_g > 50]
+# using comparison operators to generate a 'logical' vector 
+#
+# vector of which weight are greater then 50
 
-weight_g[weight_g < 30 | weight_g > 50]
+# ... and the use this to subset the data vector
 
-weight_g[weight_g >= 30 & weight_g == 21]
+# and we can get more fancy with comparisons 
+#
+#  weight_g < 30 | weight_g > 50
+#  weight_g >= 30 & weight_g == 21
 
-animals <- c("mouse", "rat", "dog", "cat")
+# animals <- c("mouse", "rat", "dog", "cat")
+# animals == "cat" | animals == "rat"
 animals[animals == "cat" | animals == "rat"] # returns both rat and cat
 
 animals %in% c("rat", "cat", "dog", "duck", "goat")
