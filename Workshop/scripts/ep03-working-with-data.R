@@ -1,4 +1,4 @@
-
+#
 #   __        __         _    _                        _ _   _       ____        _        
 #   \ \      / /__  _ __| | _(_)_ __   __ _  __      _(_) |_| |__   |  _ \  __ _| |_ __ _ 
 #    \ \ /\ / / _ \| '__| |/ / | '_ \ / _` | \ \ /\ / / | __| '_ \  | | | |/ _` | __/ _` |
@@ -190,7 +190,7 @@ surveys %>%
 #
 # https://tidyr.tidyverse.org/
 
-library(tidyr_)
+library(tidyr)
 
 #
 # Reshaping Dataframes - wide vs tall and pivoting between them
@@ -276,7 +276,14 @@ surveys_long <- surveys %>%
 
 
 
-# End of Episode 
+
+#    _____           _          __   _____ ____   ___ _____ 
+#   | ____|_ __   __| |   ___  / _| | ____|  _ \ / _ \___ / 
+#   |  _| | '_ \ / _` |  / _ \| |_  |  _| | |_) | | | ||_ \ 
+#   | |___| | | | (_| | | (_) |  _| | |___|  __/| |_| |__) |
+#   |_____|_| |_|\__,_|  \___/|_|   |_____|_|    \___/____/ 
+#                                                           
+
 
 
 
@@ -285,13 +292,3 @@ surveys_long <- surveys %>%
 # commit files to git
 
 # push commit to github
-
-
-
-
-
-
-
-
-
-
