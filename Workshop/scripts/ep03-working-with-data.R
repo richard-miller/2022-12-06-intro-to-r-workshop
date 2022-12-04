@@ -52,7 +52,8 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 #   | (_| | |_) | | |_| | |   
 #    \__,_| .__/|_|\__, |_|   
 #         |_|      |___/      
-
+#
+# https://dplyr.tidyverse.org/
 
 
 # Load up the required "dplyr" library from the TidyVerse
@@ -186,27 +187,71 @@ surveys %>%
 #   | |_| | (_| | |_| | |   
 #    \__|_|\__,_|\__, |_|   
 #                |___/      
+#
+# https://tidyr.tidyverse.org/
+
+library(tidyr_)
 
 #
-# Reshaping
+# Reshaping Dataframes - wide vs tall and pivoting between them
 #
 
+# A "Wide" dataframe
+#
+#
+#     day   tesla  ford   kia mazda    <---- Names
+#     -----------------------------
+#     sat       2     1     3     6    <---- Values
+#     sun      63    71    95    12    <---- Values
+#          
+#
+
+cars_wide <- data.frame (
+  day   = c("sat", "sun"),
+  tesla = c(2, 63),
+  ford  = c(1,71),
+  kia   = c(3, 95),
+  mazda = c(6,12)
+) 
+  
+
+# Same information represented in a "Long" dataframe
+#
+#          Key   Value
+#
+#     day  make  qty
+#    +----+-----+----+
+#
+#
+#
+#
+
+# tidyr's pivot_longer() can do this for us
+
+# and the reverse 
 
 
+# now we can apply to our surveys data
+surveys_long <- surveys %>%
+  filter(!is.na(weight)) %>%
+  group_by(plot_id, genus) %>%
+  summarize(mean_weight = mean(weight))
+
+# and reshape wider
 
 
-
-
-#-----------
-# CHALLENGE
-#-----------
+#
+# CHALLENGE 4 
+#
 
 # 1. Spread the surveys data frame with year as columns, plot_id as rows, 
 #    and the number of genera per plot as the values. You will need to summarize before reshaping, 
 #    and use the function n_distinct() to get the number of unique genera within a particular chunk of data. 
 #    It’s a powerful function! See ?n_distinct for more.
 
+
 # 2. Now take that data frame and pivot_longer() it again, so each row is a unique plot_id by year combination.
+
 
 # 3. The surveys data set has two measurement columns: hindfoot_length and weight. 
 #    This makes it difficult to do things like look at the relationship between mean values of each 
@@ -215,6 +260,7 @@ surveys %>%
 #    takes on the value of either hindfoot_length or weight. 
 #    Hint: You’ll need to specify which columns are being pivoted.
 
+
 # 4. With this new data set, calculate the average of each measurement in each year for each different plot_type. 
 #    Then pivot_wider() them into a data set with a column for hindfoot_length and weight. 
 #    Hint: You only need to specify the key and value columns for pivot_wider().
@@ -222,12 +268,23 @@ surveys %>%
 
 
 
-
-#----------------
+#
 # Exporting data
-#----------------
+#
+
+# lets use write_csv() to save data in our data_out folder
 
 
+
+# End of Episode 
+
+
+
+# save files
+
+# commit files to git
+
+# push commit to github
 
 
 
