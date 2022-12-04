@@ -4,7 +4,7 @@
 #    | || | | | |_| | | (_) | | || (_) | |  _ < 
 #   |___|_| |_|\__|_|  \___/   \__\___/  |_| \_\
 # 
-#   Derived from: https://datacarpentry.org/R-genomics/01-intro-to-R.html
+#   Derived from: https://datacarpentry.org/R-ecology-lesson/01-intro-to-r.html
 
 #
 # Topic: Basic Calculations and using Objects
@@ -19,11 +19,13 @@
 #
 # - * / ** ^ ( )
 
+
 # 
 # Exercises
 #
 
 # What does: 11 + 1 / 6  evaluate to ?
+
 
 # Solution:
 
@@ -31,8 +33,6 @@
 # Calculate 10 plus 2 all divided by 3 and then squared
 
 # Solution:
-
-
 
 
 # Storing values
@@ -87,7 +87,7 @@ ekljre2jklwef023ijlefj93jkl23rj90f32k <- 1
 #
 # Solution: [Hint:       <- "Introduction to R"]
 
-# Assign the name of video conferencing tool we are using to an object
+# Assign the name of video conferencing tool to an object
 #
 # Solution: [Hint:      <- "Zoom"]
 
@@ -102,6 +102,7 @@ ekljre2jklwef023ijlefj93jkl23rj90f32k <- 1
 #  min-length
 #  2widths
 #  celsius2kelvin
+
 
 #
 # Topic: Displaying results
@@ -183,7 +184,6 @@ round(digits = 2, x = 3.14159)
 
 #
 # Topic: Vectors and Data Types
-# Presented by: Richard Miller
 
 # Combine some values in a vector
 glengths <- c(4.6, 3000, 50000)
@@ -221,7 +221,6 @@ sqrt_of_minus_one <- 1i
 true_or_false_value <- TRUE
 decimal_number = 54.0
 whole_number = -54L
-
 
 class(sqrt_of_minus_one)
 class(true_or_false_value)
@@ -267,7 +266,7 @@ class(decimal_number)
 
 #
 # Topic: Subsetting vectors
-# Presented by: Evan Matthews
+#
 
 animals <- c("mouse", "rat", "dog", "cat")
 animals[2]
