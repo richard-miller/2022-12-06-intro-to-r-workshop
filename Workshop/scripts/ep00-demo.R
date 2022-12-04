@@ -9,6 +9,8 @@
 # A very quick demonstration of the sorts of things you can do with R
 #
 
+# Read a CSV file
+diamonds <- read_csv(file = "data_raw/diamond.csv")
 
 # Load the GGPLOT2 library
 library(ggplot2)
@@ -18,6 +20,21 @@ View(diamonds)
 
 # Generate a Plot 
 ggplot(diamonds) + 
-  geom_point(aes(x=carat, y=price, color=cut)) + 
+  theme_dark() +
+  geom_point(aes(x=carat, y=price, color=cut)) +
   geom_smooth(aes(x=carat, y=price))
 
+
+
+#    ____                       ____                          _ _       ____            _     
+#   / ___|  __ ___   _____     / ___|___  _ __ ___  _ __ ___ (_) |_    |  _ \ _   _ ___| |__  
+#   \___ \ / _` \ \ / / _ \   | |   / _ \| '_ ` _ \| '_ ` _ \| | __|   | |_) | | | / __| '_ \ 
+#    ___) | (_| |\ V /  __/_  | |__| (_) | | | | | | | | | | | | |_ _  |  __/| |_| \__ \ | | |
+#   |____/ \__,_| \_/ \___( )  \____\___/|_| |_| |_|_| |_| |_|_|\__( ) |_|    \__,_|___/_| |_|
+#                         |/                                       |/                         
+
+# save file changes
+
+# commit changes to git version control
+
+# push commits (changes) to GitHub
