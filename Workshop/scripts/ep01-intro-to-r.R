@@ -356,12 +356,16 @@ animals <- c("mouse", "rat", "dog", "cat")
 #
 # Solution
 
+
 # Use the function median() to calculate the median of the heights vector.
 #
 # Solution
 
+
 # Use R to figure out how many people in the set are taller than 67 inches.
 #
+
+
 # [Hint: R has a builtin function called length() that tells you 
 # how many values are in a vector
 
