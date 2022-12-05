@@ -19,7 +19,7 @@ download.file(url = "https://ndownloader.figshare.com/files/2292169",
               destfile = "data_raw/portal_data_joined.csv")
 
 # now we will read this "csv" into an R object called "surveys"
-surveys <- read.csv("data_raw/portal_data_joined.csv")
+surveys <- read_csv("data_raw/portal_data_joined.csv")
 
 
 # and take a look at it
