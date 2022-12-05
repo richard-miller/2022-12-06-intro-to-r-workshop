@@ -10,7 +10,7 @@
 #
 
 # Read a CSV file
-diamonds <- read_csv(file = "data_raw/diamond.csv")
+diamonds <- read.csv(file = "data_raw/diamond.csv")
 
 # Load the GGPLOT2 library
 library(ggplot2)
