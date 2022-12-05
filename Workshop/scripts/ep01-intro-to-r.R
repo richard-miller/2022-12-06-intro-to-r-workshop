@@ -287,7 +287,7 @@ length_species
 # create a vector
 animals <- c("mouse", "rat", "dog", "cat")
 
-# reference (access) to second element using [] 
+# reference (access) the second element using [] 
 
 # access the subset consisting of element 3 and element 2
 
@@ -313,12 +313,16 @@ animals <- c("mouse", "rat", "dog", "cat")
 #  weight_g < 30 | weight_g > 50
 #  weight_g >= 30 & weight_g == 21
 
+# another example with animals
+#
 # animals <- c("mouse", "rat", "dog", "cat")
 # animals == "cat" | animals == "rat"
-animals[animals == "cat" | animals == "rat"] # returns both rat and cat
 
-animals %in% c("rat", "cat", "dog", "duck", "goat")
-animals[animals %in% c("rat", "cat", "dog", "duck", "goat")]
+
+# %in% operator 
+#
+# animals %in% c("rat", "cat", "dog", "duck", "goat")
+# animals[animals %in% c("rat", "cat", "dog", "duck", "goat")]
 
 # Challenge
 #
@@ -333,15 +337,13 @@ animals[animals %in% c("rat", "cat", "dog", "duck", "goat")]
 
 # Topic: Missing data (NA - Not Available)
 
-heights <- c(2, 4, 4, NA, 6)
-mean(heights)
-max(heights)
-mean(heights, na.rm = TRUE)
-max(heights, na.rm = TRUE)
+# heights <- c(2, 4, 4, NA, 6)
+#
+# lets look at the mean(), max() with and withoout na.rm = TRUE
 
-heights[!is.na(heights)]
-na.omit(heights)
-heights[complete.cases(heights)]
+# other ways to exclude NAs - is.na(),  na.omit(), copmlete.cases()
+
+
 
 #
 # Exercise (extended)
@@ -362,3 +364,11 @@ heights[complete.cases(heights)]
 #
 # [Hint: R has a builtin function called length() that tells you 
 # how many values are in a vector
+
+
+#    ____                       ____                          _ _       ____            _     
+#   / ___|  __ ___   _____     / ___|___  _ __ ___  _ __ ___ (_) |_    |  _ \ _   _ ___| |__  
+#   \___ \ / _` \ \ / / _ \   | |   / _ \| '_ ` _ \| '_ ` _ \| | __|   | |_) | | | / __| '_ \ 
+#    ___) | (_| |\ V /  __/_  | |__| (_) | | | | | | | | | | | | |_ _  |  __/| |_| \__ \ | | |
+#   |____/ \__,_| \_/ \___( )  \____\___/|_| |_| |_|_| |_| |_|_|\__( ) |_|    \__,_|___/_| |_|
+#                         |/                                       |/                         
