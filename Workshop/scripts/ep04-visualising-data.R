@@ -14,7 +14,7 @@ library(tidyverse)
 
 # load data
 
-surveys_complete <- read_csv("data_raw/surveys_complete.csv")
+surveys_complete <- read_csv("data_out/surveys_complete.csv")
 
 # empty plot
 
