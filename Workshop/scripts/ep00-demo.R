@@ -37,3 +37,13 @@ ggplot(diamonds) +
 # commit changes to git version control
 
 # push commits (changes) to GitHub using a token
+
+# Step 1
+#
+# Create a new Personal Access Token (PAT)
+usethis::create_github_token(scopes = 'repo', description = 'R Workshop')
+
+# Step 2
+#
+# Save our Personal Access Token (PAT)
+gitcreds::gitcreds_set(url = "https://github.com")
