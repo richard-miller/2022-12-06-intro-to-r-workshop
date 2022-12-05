@@ -15,14 +15,13 @@ diamonds <- read.csv(file = "data_raw/diamond.csv")
 # Load the GGPLOT2 library
 library(ggplot2)
 
-# The dataset 'diamonds' in included with the ggplot library
-View(diamonds)
-
 # Generate a Plot 
 ggplot(diamonds) + 
   theme_dark() +
   geom_point(aes(x=carat, y=price, color=cut)) +
   geom_smooth(aes(x=carat, y=price))
+
+
 
 
 
@@ -37,4 +36,4 @@ ggplot(diamonds) +
 
 # commit changes to git version control
 
-# push commits (changes) to GitHub
+# push commits (changes) to GitHub using a token
