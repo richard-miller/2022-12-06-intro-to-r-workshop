@@ -40,11 +40,11 @@ download.file(url = "https://ndownloader.figshare.com/files/2292169",
 
 
 # Read some data from a CSV file
-surveys <- read.csv("data_raw/portal_data_joined.csv")
+s <- read.csv(file = "data_raw/portal_data_joined.csv")
 
 # lets remind ourselves what the dataframe looks like with str(), view() etc ...
-
-
+View(s)
+s
 
 #        _       _            
 #     __| |_ __ | |_   _ _ __ 
@@ -57,7 +57,7 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 
 
 # Load up the required "dplyr" library from the TidyVerse
-
+library(dplyr)
 
 #
 # Some common dplyr functions - select(), filter(), mutate(), group_by(), summarize()
@@ -66,22 +66,32 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 #
 # select() - subset of columns (variables)
 #
+select(s, year)
+select(s, sex)
+
 
 # include particular columns: eg plot_id, species_id and weight
+select(s, year, sex)
+select(s, plot_id, species_id, weight)
 
 # exclude particular columns, eg record_id and species_id using a '-'
-
-
+select(s, -record_id)
+select(s, -record_id, -month)
 
 #
 # filter() - subset of rows (observations)
 #
 
-# all rows where year is 1995
 
-# oldest year obversation rows (hint max(year, ))
+# all rows where year is 1995
+filter(s, year == 1995)
+
+# oldest year obsersvation rows (hint max(year, ))
+filter(s, max(year) == year)
+filter(s, mean(year) <= year )
 
 # longest hindfoot_length
+max( s$hindfoot_length[!is.na(s$hindfoot_length)] )
 
 
 
@@ -90,21 +100,27 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 #
 
 # using temp dataframes, get rows where weight greater then 5 and show only species_id, sex and weight
-
+f <- filter(s, weight > 5)
 
 # and we can store/assign the final result to an object
+select(f, species_id, sex, weight)
 
+select( filter(s, weight > 5), species_id, sex, weight )
 
-
+subset <- s %>%
+  filter(weight > 5) %>% 
+  select(species_id, sex, weight)
 
 #
 # CHALLENGE 1
 #
 
-# Using pipes, subset 'surveys' dataframe to extract animals collected before 1995 and 
+# Using pipes, subset 's' dataframe to extract animals collected before 1995 and 
 # retain only the columns called year, sex, and weight.
 
-
+s %>% 
+  filter( year < 1995) %>%
+  select( year, sex, weight )
 
 
 
@@ -112,23 +128,32 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 # mutate() - add columns to a dataframe
 #
 
+
+
 # lets add a column called weight_kg by dividing the weight by 1000
+s <- s %>% 
+  mutate( weight_kg = weight / 1000)
 
-
-# we can also add multiple columns at the same time - ie, we cloud also add weight_lb by multiplying by 2.2
-
+# we can also add multiple columns at the same time - ie, we could also add weight_lb by multiplying by 2.2
+s <- s %>% 
+  mutate( weight_kg = weight / 1000, weight_lb = weight_kg * 2.2)
 
 # using head() can be useful now
+s %>% 
+  filter( year < 1995) %>%
+  select( year, sex, weight ) %>%
+  tail(10) %>%
+  head(1)
 
 
 # NA means "not available". We check is a data value is NA with the function is.na() and ! means 'not'
-
+is.na()
 
 #
 # CHALLENGE 2
 #
 
-# Create a new data frame from the surveys dataframe that meets the following criteria:
+# Create a new data frame n from the s dataframe that meets the following criteria:
 #
 # contains only the species_id column and a new column called hindfoot_cm containing 
 # the hindfoot_length  values in millimeters converted to centimeters.
@@ -136,18 +161,25 @@ surveys <- read.csv("data_raw/portal_data_joined.csv")
 # The hindfoot_cm column, should have no NA's and all values need to be less than 3.
 #
 # Hint: think about how the commands should be ordered to produce this data frame!
-
+f <- s %>% 
+  mutate(hindfoot_cm = hindfoot_length / 10) %>% 
+  filter( !is.na(hindfoot_cm),
+         hindfoot_cm < 3, 
+         na.rm = TRUE ) %>% 
+  select(species_id, hindfoot_cm)
 
 
 #
 # group_by() - collect like things together to allow us to summarise them
 #
-surveys %>%
+s %>%
   group_by(sex) %>%
   summarize(mean_weight = mean(weight, na.rm = TRUE))
 
 # we can include multiple group_by variables, eg species_id
-
+s %>%
+  group_by(sex, species_id) %>%
+  summarize(mean_weight = mean(weight, na.rm = TRUE))
 
 #
 # count() - how many observerations for each (or combinations of) variables(s)
@@ -221,18 +253,28 @@ cars_wide <- data.frame (
 #
 #     day  make  qty
 #    +----+-----+----+
-#
+#      sat tesla 2
+#      sun tesla 63
+#      sat ford  1
+#      sun ford  71
+#      sat kia   3
+#      sun kia   95
+#      sat mazda 6
+#      sun mazda 12
 #
 #
 #
 
 # tidyr's pivot_longer() can do this for us
+cars_long <- cars_wide %>%
+  pivot_longer(names_to = "make", values_to = "qty", col = -day)
 
 # and the reverse 
-
+cars_long %>%
+  pivot_wider(names_from = make, values_from = qty)
 
 # now we can apply to our surveys data
-surveys_long <- surveys %>%
+surveys_long <- s %>%
   filter(!is.na(weight)) %>%
   group_by(plot_id, genus) %>%
   summarize(mean_weight = mean(weight))
